@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DriveDock Redirect</title>
+</head>
+<body>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const telegramId = urlParams.get('telegram_id');
 
+        if (telegramId) {
+            // Перенаправляем прямо в приложение
+            window.location.href = "drivedock://auth?telegram_id=" + telegramId;
+        }
+    </script>
+    <p style="text-align: center; font-family: sans-serif; margin-top: 50px;">
+        Перенаправление в приложение DriveDock...<br><br>
+        Если приложение не открылось автоматически, 
+        <a id="manualLink" href="#">нажмите сюда</a>.
+    </p>
+    <script>
+        document.getElementById('manualLink').href = "drivedock://auth?telegram_id=" + telegramId;
+    </script>
+</body>
+</html>
